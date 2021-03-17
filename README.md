@@ -5,9 +5,6 @@ This repository is supplementary material that obtains the simulation code for r
 ![demo pic](https://github.com/cnqiangfu/PL-VINS/blob/master/support_files/plvins-vinsmono.png)
 
 
-This respository is an initial version, it will be improved further in the coming months.
-
-
 **DemoShow**: [youtube](https://youtu.be/MPf6HufbgdE) or [bilibili](https://www.bilibili.com/video/BV1464y1F7hk/)
 
 [![PL-VINS](https://img.youtube.com/vi/MPf6HufbgdE/0.jpg)](https://youtu.be/MPf6HufbgdE)
