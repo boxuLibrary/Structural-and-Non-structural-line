@@ -49,7 +49,8 @@ with open(filepath + '/cam_pose.txt', 'r') as f:   #   imu_circle   imu_spline
 
 
 ## plot 3d        
-fig = plt.figure()
+fig = plt.figure(facecolor='white')
+fig.set_facecolor('white')
 plt.ion()
 ax = fig.gca(projection='3d')
 
@@ -58,7 +59,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 rpy = []
 t = []
-for i in range(0,400,5):
+for i in range(0,1600,5):
     ax.clear()    
     ax.scatter(x, y, z,c='g')
     
@@ -69,7 +70,9 @@ for i in range(0,400,5):
     t.append( position[i] )
     p = position[i]
     for j in range(len(rpy)):
+        # step3: 绘制轨迹
         drawCoordinateFrame(ax, rpy[j], t[j])    
+        
     
     s = filepath + '/keyframe/all_points_' +str(i)+'.txt'
     with open(s, 'r') as f:   
@@ -81,6 +84,7 @@ for i in range(0,400,5):
             y1.append( numbers_float[1] )
             z1.append( numbers_float[2] )
             
+            # step1: 绘制连接线
             ax.plot( [ numbers_float[0],   p[0]  ] , [ numbers_float[1], p[1] ] , zs=[ numbers_float[2], p[2] ] )
 
     s = filepath + '/house_model/house.txt'
@@ -89,16 +93,20 @@ for i in range(0,400,5):
         for line in data:
             odom = line.split()  # 将单个数据分隔开存好
             numbers_float = map(float, odom)  # 转化为浮点数
+            # step2 绘制直线
             ax.plot([numbers_float[0], numbers_float[3]], [numbers_float[1], numbers_float[4]],'b' ,zs=[numbers_float[2], numbers_float[5]])
         
     ax.scatter(x1, y1, z1,c='r',marker='^')
+    ax.w_xaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
+    ax.w_yaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
+    ax.w_zaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
+    
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-    ax.set_xlim(-15, 20)
-    ax.set_ylim(-15, 20)
-    ax.set_zlim(0, 20)
+    ax.set_xlim(-5, 5)
+    ax.set_ylim(-5, 5)
+    ax.set_zlim(0, 6)
     ax.legend()
     plt.show() 
     plt.pause(0.01)
-    

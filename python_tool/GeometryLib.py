@@ -92,6 +92,9 @@ class Arrow3D(FancyArrowPatch):
 
 def drawCoordinateFrame( ax, rpy, t):
         
+
+    
+    
     # define origin
     o = np.array([0,0,0])
     # define ox0y0z0 axes
@@ -112,7 +115,10 @@ def drawCoordinateFrame( ax, rpy, t):
     z = Arrow3D(   [o1[0], z1[0]],    [o1[1], z1[1]],     [o1[2], z1[2]] ,  mutation_scale=20, arrowstyle='-|>', color='g')
 
    # draw
-    ax.add_artist( x)    
-    ax.add_artist( y )
-    ax.add_artist( z )
+    # ax.add_artist( x)    
+    # ax.add_artist( y )
+    # ax.add_artist( z )
+
+    # ax.plot( [ o1[0], o1[0] + 0.1 ] , [ o1[1], o1[1] + 0.1 ] , zs=[ o1[2], o1[1] + 0.1 ], color="red")
+    ax.scatter( o1[0],  o1[1], o1[2], c='r',marker='^', s=50)
 
