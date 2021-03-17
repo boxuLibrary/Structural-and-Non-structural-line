@@ -2,8 +2,7 @@
 
 This repository is supplementary material that obtains the simulation code for running and comparison results. The code is the initial version, and it will be improved further in the comming months.
 
-![demo pic](https://github.com/cnqiangfu/PL-VINS/blob/master/support_files/plvins-vinsmono.png)
-
+![demo pic](./bin/demo/simulate_line.png)
 
 **DemoShow**: [youtube](https://youtu.be/MPf6HufbgdE) or [bilibili](https://www.bilibili.com/video/BV1464y1F7hk/)
 
