@@ -10,7 +10,7 @@ We compared the number of iterative optimization and accuracy, as the line obser
   2-parameter|10.5|12.13|14.13|16.29
   4-parameter|18.25|19.00|19.14|19.49
   
-**<center>结果统计[位置：m,角度：deg]</center>**
+**<center> comparison of optimization iterations </center>**
 -|H|V|3D|提升|Roll|Pitch|Heading|提升
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 PPP定位|1.970|4.429|4.847|——|——|——|——|——
