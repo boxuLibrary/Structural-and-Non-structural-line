@@ -33,13 +33,12 @@ Eigen 3.3.1, OpenCV 3.3.9, Cere-solver 2.0.0: [Ceres Installation](http://ceres-
 ## 2. Build Project with Cmake
 Clone the repository and compile the project:
 ```
-
-	git clone https://github.com/xubogithub/Structural-and-Non-structural-line.git
-	cd ~/Structural-and-Non-structural-line-master/
-	mkdir build
-	cd build
-	cmake ..
-	make -j4   
+git clone https://github.com/xubogithub/Structural-and-Non-structural-line.git
+cd ~/Structural-and-Non-structural-line-master/
+mkdir build
+cd build
+cmake ..
+make -j4   
 ```
 **Notice**: The executable file **line_optimization** is in the bin directory, and you can run it by **./line_optimize**
 
@@ -47,15 +46,15 @@ Clone the repository and compile the project:
 We provide some visualizaton tools for comparison and analysis.
 Visual simulation animation:
 ```
-	python draw_points.py
+python draw_points.py
 ```
 Visual simulation trajectory and line landmarks:
 ```
-	python plot_simulate.py
+python plot_simulate.py
 ```
 Visual results of the code:
 ```
-	python plot_result.py
+python plot_result.py
 ```
 ## 4. Related Papers
 
