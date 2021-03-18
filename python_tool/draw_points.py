@@ -59,7 +59,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 rpy = []
 t = []
-for i in range(0,1600,5):
+for i in range(0,len(quaterntions),3):
     ax.clear()    
     ax.scatter(x, y, z,c='g')
     

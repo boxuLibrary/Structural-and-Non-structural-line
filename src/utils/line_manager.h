@@ -62,6 +62,8 @@ void read_line_obs(
         const std::string &path,
         Eigen::aligned_map<int, Eigen::aligned_map<int, line_obs>> &line_obs_map);
 
+void add_noise_obs(Eigen::aligned_map<int, Eigen::aligned_map<int, line_obs>> &line_obs_map, double noise);
+
 void read_linelandmark(
         const std::string &path,
         Eigen::aligned_unordered_map<int, LineLandmark> &line_landmarks);

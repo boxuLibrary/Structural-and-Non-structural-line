@@ -11,7 +11,7 @@
 #include <set>
 
 
-bool plucker_optimize = 0; // PLUCKER_OPTIMIZE    LINE_OPTIMIZE
+bool plucker_optimize = 1; // PLUCKER_OPTIMIZE    LINE_OPTIMIZE
 
 using namespace std;
 
@@ -38,8 +38,6 @@ int main(int argc, char **argv) {
     std::string line_landmarks_path =
             "../bin/house_model/house.txt";
 
-    std::string line_landmarks_path_noise =
-            "../bin/house_model/house_noise.txt";
 
     // step1: read camera poses
     Eigen::aligned_vector<Transformd> camera_poses;
@@ -55,7 +53,7 @@ int main(int argc, char **argv) {
     Eigen::aligned_map<int, Eigen::aligned_map<int, line_obs>> line_obs_map;
     read_line_obs(line_obs_path, line_obs_map);
 
-    std::map<int, std::set<int>> line2cam_map;
+    add_noise_obs(line_obs_map, 0);
 
     // step4: triangulation line
 

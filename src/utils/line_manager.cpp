@@ -59,27 +59,8 @@ void read_line_obs(
 
             line_obs observation;
 
-            std::random_device rd_sp;
-            std::default_random_engine generator_sp(rd_sp());
-            std::normal_distribution<double> noise_sp(0.0, 5);
-            Eigen::Vector2d noise_line_sp(noise_sp(generator_sp), noise_sp(generator_sp));
-
-            std::random_device rd_ep;
-            std::default_random_engine generator_ep(rd_ep());
-            std::normal_distribution<double> noise_ep(0.0, 5);
-            Eigen::Vector2d noise_line_ep(noise_ep(generator_ep), noise_ep(generator_ep));
-
-            noise_line_sp = noise_line_sp / 460;
-            noise_line_ep = noise_line_ep / 460;
-
             ss >> observation.obs[0] >> observation.obs[1] >> observation.obs[2] >>
                observation.obs[3] >> observation.landmark_id;
-
-            observation.obs[0] = observation.obs[0] + noise_line_sp[0];
-            observation.obs[1] = observation.obs[1] + noise_line_sp[1];
-            observation.obs[2] = observation.obs[2] + noise_line_ep[0];
-            observation.obs[3] = observation.obs[3] + noise_line_ep[1];
-
 
             line_obs_map[observation.landmark_id][i] = observation;
 //            std::cout << std::fixed << observation.obs.transpose() << " "
@@ -89,6 +70,38 @@ void read_line_obs(
         f.close();
     }
 }
+
+void add_noise_obs(Eigen::aligned_map<int, Eigen::aligned_map<int, line_obs>> &line_obs_map, double noise) {
+
+    for (auto &landmark: line_obs_map) {
+
+        for (auto &obs:landmark.second) {
+
+            std::random_device rd_sp;
+            std::default_random_engine generator_sp(rd_sp());
+            std::normal_distribution<double> noise_sp(0.0, noise);
+            Eigen::Vector2d noise_line_sp(noise_sp(generator_sp), noise_sp(generator_sp));
+
+            std::random_device rd_ep;
+            std::default_random_engine generator_ep(rd_ep());
+            std::normal_distribution<double> noise_ep(0.0, noise);
+            Eigen::Vector2d noise_line_ep(noise_ep(generator_ep), noise_ep(generator_ep));
+
+            noise_line_sp = noise_line_sp / 460;
+            noise_line_ep = noise_line_ep / 460;
+
+            obs.second.obs[0] = obs.second.obs[0] + noise_line_sp[0];
+            obs.second.obs[1] = obs.second.obs[1] + noise_line_sp[1];
+            obs.second.obs[2] = obs.second.obs[2] + noise_line_ep[0];
+            obs.second.obs[3] = obs.second.obs[3] + noise_line_ep[1];
+
+        }
+
+    }
+
+
+}
+
 
 void read_linelandmark(
         const std::string &path,
@@ -111,7 +124,6 @@ void read_linelandmark(
         ss >> landmark.spt_w_gt[0] >> landmark.spt_w_gt[1] >>
            landmark.spt_w_gt[2] >> landmark.ept_w_gt[0] >> landmark.ept_w_gt[1] >>
            landmark.ept_w_gt[2];
-
 
 
         landmark.id = count;
@@ -273,8 +285,8 @@ void triangulate_line(
             // landmark.para.x() = 1.0 / distance;
             landmark.second.para.x() = 0.2;
 
-            // landmark.para.y() = acos(cos_theta);
-            landmark.second.para.y() = 0;
+            landmark.second.para.y() = acos(cos_theta);
+            // landmark.second.para.y() = 0;
 
         } else {
 
@@ -320,7 +332,7 @@ void updatelineplk(
             Transformd T_w_s = poses.at(host_frame_id);
 
             Eigen::Vec6d line_w = plk_to_pose(landmark.second.plk_h, T_w_s.rotationMatrix(),
-                                                 T_w_s.pos); // transfrom to world frame
+                                              T_w_s.pos); // transfrom to world frame
             landmark.second.plk_w = line_w; // transfrom to camera frame
         } else {
 
@@ -509,13 +521,14 @@ void optimize_line_without_plucker(Eigen::aligned_unordered_map<int, LineLandmar
 
         std::cout << "optimize time is: " << t_line_optimize.toc() << std::endl;
         std::cout << "add factor is: " << line_obs_num << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
 
     }
 
     double average_time = total_time / num_optimaize;
     double average_iteration = total_iteration / num_optimaize;
 
-    std::cout << "average optimazation of 2 line is: " << average_time << std::endl;
+    std::cout << "average optimization of 2 line is: " << average_time << std::endl;
     std::cout << "average iteration of 2 line is: " << average_iteration << std::endl;
 }
 
@@ -591,6 +604,7 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
                         PluckerLineErrorOneCameraTerm::create(
                                 target_frame_obs.second.obs);
 
+                // auto diff for plucker representation
                 problem.AddResidualBlock(
                         f, loss_function, line_landmark.second.line_orth.data(), target_pose_param.data(),
                         T_i_c_paramter.data());
@@ -605,7 +619,7 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
 
         ceres::Solver::Options options;
         options.max_num_iterations = 25;
-        options.linear_solver_type = ceres::DENSE_SCHUR;
+        options.linear_solver_type = ceres::DENSE_QR;
         options.minimizer_progress_to_stdout = true;
 
         TicToc t_plucker;
