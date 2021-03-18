@@ -11,7 +11,7 @@ We compared the number of iterative optimization and accuracy, as the line obser
   4-parameter|18.25|19.00|19.14|19.49
   
 **<center> comparison of optimization iterations </center>**
--|0|1.5|3|4.5|Roll|Pitch|Heading|提升
+-|0|1.5|3|4.5
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 2-parameter|10.5|12.13|14.13|16.29
 4-parameter|18.25|19.00|19.14|19.49
