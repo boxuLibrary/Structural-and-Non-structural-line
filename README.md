@@ -3,7 +3,7 @@ This repository is supplementary material that provides the simulation code for 
 
 <div align=center><img width="500" height="300" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.gif"/></div>
 
-<div align=center><img width="700" height="500" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
+<div align=center><img width="640" height="340" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
 
 
 
