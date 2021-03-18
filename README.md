@@ -1,6 +1,7 @@
 # [PLS-VIO] Comparison of 4-parameter orthogonal expression and 2-parameter expression proposed by our paper of line features.
 This repository is supplementary material that provides the simulation code for running and comparison results. After we generate the simulated straight line observations, we initialize them to obtain the straight line in the three-dimensional space and optimize the  line landmarks. The code is the initial version, and it will be improved further in the comming months.
 
+<div align=center><img width="150" height="150" src="https://img-blog.csdn.net/20161028230559575"/></div>
 <center> <img src="./bin/demo/simulate_line.gif" style="zoom:50%"> <center>
 	
 <center> <img src="./bin/demo/simulate_line.png" style="zoom:50%"> <center>
