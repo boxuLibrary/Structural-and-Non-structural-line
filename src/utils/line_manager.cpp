@@ -285,8 +285,8 @@ void triangulate_line(
             // landmark.para.x() = 1.0 / distance;
             landmark.second.para.x() = 0.2;
 
-            landmark.second.para.y() = acos(cos_theta);
-            // landmark.second.para.y() = 0;
+//            landmark.second.para.y() = acos(cos_theta);
+             landmark.second.para.y() = 0;
 
         } else {
 
@@ -556,6 +556,7 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
         int host_frame_id = line_obs_map.at(landmark_id).begin()->first;
         auto &host_pose_param = camera_pose_parameters.at(host_frame_id);
         // add externsic parameter
+
         ceres::LocalParameterization *local_parameterization =
                 new PoseLocalParameterization();
         problem.AddParameterBlock(T_i_c_paramter.data(), 7,
@@ -582,9 +583,6 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
         ceres::LocalParameterization *local_parameterization_line =
                 new LineOrthParameterization();
 
-//        ceres::LocalParameterization *local_parameterization_line =
-//               PluckerLineLocalParameterization::create();
-
         problem.AddParameterBlock(line_landmark.second.line_orth.data(), 4,
                                   local_parameterization_line); // p,q
 
@@ -609,11 +607,6 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
                         f, loss_function, line_landmark.second.line_orth.data(), target_pose_param.data(),
                         T_i_c_paramter.data());
 
-//                lineProjectionFactor *f = new lineProjectionFactor(target_frame_obs.second.obs);     // 特征重投影误差
-//                problem.AddResidualBlock(f, loss_function,
-//                                         target_pose_param.data(),
-//                                         T_i_c_paramter.data(),
-//                                         line_landmark.second.line_orth.data());
             }
         }
 
@@ -642,6 +635,8 @@ void optimize_line_with_plucker(Eigen::aligned_unordered_map<int, LineLandmark> 
 
 void savefeatures(Eigen::aligned_unordered_map<int, LineLandmark> &line_landmarks, bool plucker_optimize) {
 
+    double total_err = 0;
+    int total_line_num = 0;
     for (const auto &landmark : line_landmarks) {
         if (!plucker_optimize) {
 
@@ -656,6 +651,13 @@ void savefeatures(Eigen::aligned_unordered_map<int, LineLandmark> &line_landmark
                       << landmark.second.ept_w.y() << " "
                       << landmark.second.ept_w.z() << " " << std::endl;
                 foutC.close();
+
+                Eigen::Vector3d sp_err = landmark.second.spt_w_gt - landmark.second.spt_w;
+                Eigen::Vector3d ep_err = landmark.second.ept_w_gt - landmark.second.ept_w;
+
+                total_err  = total_err + (sp_err.norm() + ep_err.norm()) / 2;
+
+                total_line_num++;
 
                 std::cout << "optimization endpoint: "
                           << landmark.second.spt_w.transpose() << "    "
@@ -686,6 +688,13 @@ void savefeatures(Eigen::aligned_unordered_map<int, LineLandmark> &line_landmark
                       << landmark.second.ept_w.z() << " " << std::endl;
                 foutC.close();
 
+                Eigen::Vector3d sp_err = landmark.second.spt_w_gt - landmark.second.spt_w;
+                Eigen::Vector3d ep_err = landmark.second.ept_w_gt - landmark.second.ept_w;
+
+                total_err  = total_err + (sp_err.norm() + ep_err.norm()) / 2;
+
+                total_line_num++;
+
                 std::cout << "optimization endpoint: "
                           << landmark.second.spt_w.transpose() << "    "
                           << landmark.second.ept_w.transpose() << "    "
@@ -699,4 +708,8 @@ void savefeatures(Eigen::aligned_unordered_map<int, LineLandmark> &line_landmark
 
         }
     }
+
+    double aver_err = total_err / total_line_num;
+    std::cout << "average err is: " << aver_err << std::endl;
+
 }

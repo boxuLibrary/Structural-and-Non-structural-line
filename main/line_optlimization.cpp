@@ -11,7 +11,7 @@
 #include <set>
 
 
-bool plucker_optimize = 1; // PLUCKER_OPTIMIZE    LINE_OPTIMIZE
+bool plucker_optimize = 0; // PLUCKER_OPTIMIZE    LINE_OPTIMIZE
 
 using namespace std;
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     Eigen::aligned_map<int, Eigen::aligned_map<int, line_obs>> line_obs_map;
     read_line_obs(line_obs_path, line_obs_map);
 
-    add_noise_obs(line_obs_map, 0);
+    add_noise_obs(line_obs_map, 1.5);
 
     // step4: triangulation line
 
