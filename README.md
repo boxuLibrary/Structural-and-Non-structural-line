@@ -1,9 +1,9 @@
 # [PLS-VIO] Comparison of 4-parameter orthogonal expression and 2-parameter expression proposed by our paper of line features.
 This repository is supplementary material that provides the simulation code for running and comparison results. After we generate the simulated straight line observations, we initialize them to obtain the straight line in the three-dimensional space and optimize the  line landmarks. The code is the initial version, and it will be improved further in the comming months.
 
-<div align=center><img width="500" height="500" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.gif"/></div>
+<div align=center><img width="500" height="300" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.gif"/></div>
 
-<div align=center><img width="500" height="500" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
+<div align=center><img width="500" height="300" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
 
 
 <center> <img src="./bin/demo/simulate_line.gif" style="zoom:50%"> <center>
