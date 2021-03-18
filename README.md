@@ -3,12 +3,9 @@ This repository is supplementary material that provides the simulation code for 
 
 <div align=center><img width="500" height="300" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.gif"/></div>
 
-<div align=center><img width="500" height="300" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
+<div align=center><img width="700" height="500" src="https://github.com/xubogithub/Structural-and-Non-structural-line/blob/master/bin/demo/simulate_line.png"/></div>
 
 
-<center> <img src="./bin/demo/simulate_line.gif" style="zoom:50%"> <center>
-	
-<center> <img src="./bin/demo/simulate_line.png" style="zoom:50%"> <center>
 
 We compared the number of iterative optimization and accuracy, as the line observation noise (pixels) in the image increases. The accuracy is obtained by comparing the reconstructed straight line with the groundtruth of the 3D line landmark.
 
