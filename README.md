@@ -42,11 +42,16 @@ cd ~/Structural-and-Non-structural-line-master/
 mkdir build
 cd build
 cmake ..
-make -j4   
+make -j4
 ```
+## 3. run program
 **Notice**: The executable file **line_optimization** is in the bin directory, and you can run it by **./line_optlimization**
 
-## 3. Python Tools for Visualization
+```
+cd ../bin
+./line_optlimization
+```
+## 4. Python Tools for Visualization
 We provide some visualizaton tools for comparison and analysis.
 Visual simulation animation:
 ```
@@ -60,7 +65,7 @@ Visual results of the code:
 ```
 python plot_result.py
 ```
-## 4. Related Papers
+## 5. Related Papers
 
 - **Leveraging Structural Information to Improve Point Line Visual-Inertial Odometry**.
 ```
@@ -69,9 +74,9 @@ The paper is received.
 
 We use [vio_data_simulation ](https://github.com/HeYijia/vio_data_simulation.git) as our base line code and generate the simulation data.
 
-## 5. Acknowledgements
+## 6. Acknowledgements
 
 Thank Dr. Yijia He very much. We are still working on improving the code reliability. For any technical issues, please contact Bo Xu boxu1995@whu.edu.cn and Peng Wang cypminxuan@163.com.
 
-## 6. Licence
+## 7. Licence
 The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
