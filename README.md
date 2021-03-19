@@ -44,7 +44,7 @@ cd build
 cmake ..
 make -j4
 ```
-## 3. run program
+## 3. Run program
 **Notice**: The executable file **line_optimization** is in the bin directory, and you can run it by **./line_optlimization**
 
 ```
