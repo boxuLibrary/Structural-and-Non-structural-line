@@ -24,14 +24,15 @@ We compared the number of iterative optimization and accuracy, as the line obser
 ## 1. Prerequisites
 1.1 **Ubuntu** and **python**
 
-Ubuntu 16.04 or Ubuntu18.04, python3.
+* Ubuntu 16.04 or Ubuntu18.04
+* python3.
 
 1.2. **Dependency**
 
-C++14 or C++17 Compiler 
-Eigen 3.3.7
-OpenCV 3.3.9 
-Cere-solver 2.0.0: [Ceres Installation](http://ceres-solver.org/installation.html), remember to **sudo make install**.
+* C++14 or C++17 Compiler 
+* Eigen 3.3.7
+* OpenCV 3.3.9 
+* Cere-solver 2.0.0: [Ceres Installation](http://ceres-solver.org/installation.html), remember to **sudo make install**.
 
 ## 2. Build Project with Cmake
 Clone the repository and compile the project:
