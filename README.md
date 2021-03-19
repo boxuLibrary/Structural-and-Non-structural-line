@@ -44,7 +44,7 @@ cd build
 cmake ..
 make -j4   
 ```
-**Notice**: The executable file **line_optimization** is in the bin directory, and you can run it by **./line_optimize**
+**Notice**: The executable file **line_optimization** is in the bin directory, and you can run it by **./line_optlimization**
 
 ## 3. Python Tools for Visualization
 We provide some visualizaton tools for comparison and analysis.
