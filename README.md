@@ -7,7 +7,7 @@ This repository is supplementary material that provides the simulation code for 
 
 
 
-We compared the number of consuming time and accuracy of optimization, as the line observation noise (pixels) in the image increases. The accuracy is obtained by comparing the reconstructed straight line with the groundtruth of the 3D line landmark.
+We compared the consuming time accuracy of optimization, as the line observation noise (pixels) in the image increases. The accuracy is obtained by comparing the reconstructed straight line with the groundtruth of the 3D line landmark.
 
 **</center> comparison of optimization consuming time[s] in different pixel noise level[pixel] </center>**  
  -|0 |1.5|3|4.5|
