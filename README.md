@@ -7,7 +7,7 @@ This repository is supplementary material that provides the simulation code for 
 
 
 
-We compared the consuming time and accuracy of optimization, as the line observation noise (pixels) in the image increases. The accuracy is obtained by comparing the reconstructed straight line with the groundtruth of the 3D line landmark.
+We compared the consuming time and accuracy of optimization, as the line observation noise (pixels) in the image increases. The accuracy is obtained by comparing the reconstructed straight line with the groundtruth of the 3D line landmark. In the experiment, we optimized the whole scene structure, and added 80 line landmarks and 600 poses to the optimizer at one time. From the experimental results, we can see that our 2-parameter expression and 4-parameter expression have the same optimization accuracy on the whole, but we optimize fewer parameters, the running time is only half of the 4-parameter expression, which improves the efficiency.
 
 **</center> comparison of optimization consuming time[s] in different pixel noise level[pixel] </center>**  
  -|0 |1.5|3|4.5|
