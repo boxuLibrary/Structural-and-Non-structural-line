@@ -69,7 +69,14 @@ python plot_result.py
 
 - **Leveraging Structural Information to Improve Point Line Visual-Inertial Odometry**.
 ```
-The paper is received.
+@misc{xu2021leveraging,
+      title={Leveraging Structural Information to Improve Point Line Visual-Inertial Odometry}, 
+      author={Bo Xu and Peng Wang and Yijia He and Yu Chen and Yongnan Chen and Ming Zhou},
+      year={2021},
+      eprint={2105.04064},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
 ```
 
 We use [vio_data_simulation ](https://github.com/HeYijia/vio_data_simulation.git) as our base line code and generate the simulation data.
