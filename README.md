@@ -78,6 +78,7 @@ python plot_result.py
       primaryClass={cs.RO}
 }
 ```
+If you use the code for your academic research, please cite our related papers.
 
 We use [vio_data_simulation ](https://github.com/HeYijia/vio_data_simulation.git) as our base line code and generate the simulation data.
 
